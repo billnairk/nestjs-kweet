@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+interface userProfileType {
+  success: boolean;
+  user: profileType;
+}
+
 interface profileType {
   [any: string]: any;
 }
 
 export default function Home() {
-  const [profile, setProfile] = useState<profileType>();
+  const [profile, setProfile] = useState<userProfileType>();
   useEffect(() => {
     const getProfile = async () => {
       const userProfile = await fetch("/api/user/profile").then((response) =>
@@ -23,7 +28,7 @@ export default function Home() {
           <Link href="login">
             <button>HOME</button>
           </Link>
-          <span>{profile?.user?.loginId}님 안녕하세요</span>
+          {profile ? <span>{profile.user?.loginId}님 안녕하세요</span> : null}
           <Link href="signup">
             <button>Profile</button>
           </Link>
