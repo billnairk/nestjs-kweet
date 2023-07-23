@@ -1,8 +1,8 @@
 {
-  "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/signup": "pages/signup.js",
-  "/api/register/registerapi": "pages/api/register/registerapi.js"
+  "/api/user/profile": "pages/api/user/profile.js",
+  "/login": "pages/login.js",
+  "/upload": "pages/upload.js"
 }

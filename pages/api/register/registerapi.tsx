@@ -4,7 +4,6 @@ import db from "../../../lib/db";
 
 async function RegisterApi(req: NextApiRequest, res: NextApiResponse) {
   const { loginId, username, email, pass } = req.body;
-  // console.log(loginId);
   const findUser = await db.user.findUnique({
     where: {
       loginId,

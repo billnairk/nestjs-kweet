@@ -1,6 +1,21 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
+interface profileType {
+  [any: string]: any;
+}
 
 export default function Home() {
+  const [profile, setProfile] = useState<profileType>();
+  useEffect(() => {
+    const getProfile = async () => {
+      const userProfile = await fetch("/api/user/profile").then((response) =>
+        response.json()
+      );
+      setProfile(() => userProfile);
+    };
+    getProfile();
+  }, []);
   return (
     <>
       <div className="MainContainer bg-purple-400 w-full h-screen p-2 flex flex-col">
@@ -8,6 +23,7 @@ export default function Home() {
           <Link href="login">
             <button>HOME</button>
           </Link>
+          <span>{profile?.user.loginId}님 안녕하세요</span>
           <Link href="signup">
             <button>Profile</button>
           </Link>

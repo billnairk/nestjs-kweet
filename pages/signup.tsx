@@ -10,24 +10,25 @@ interface SignUpProps {
   username: string;
   email: string;
   pass: string;
+}
+
+interface registerDataType {
+  success: boolean;
   existUser: string;
 }
 
 export default function SignUp() {
   const router = useRouter();
-  const [registerFn, { loading, error, data: registerData }] = fetchApiUser(
-    "api/register/registerapi"
-  );
+  const [registerFn, { loading, error, data: registerData }] =
+    fetchApiUser<registerDataType>("api/register/registerapi");
   const { register, handleSubmit } = useForm<SignUpProps>({ mode: "onChange" });
   const [existUser, setExistUser] = useState<string>("");
   const onValid = (validForm: SignUpProps) => {
     registerFn(validForm);
   };
   useEffect(() => {
-    // console.log(registerData?.success);
     if (registerData?.success) {
-      setExistUser(registerData?.existUser);
-      router.push("/");
+      router.replace("/login");
     } else if (registerData?.success === false) {
       setExistUser(JSON.stringify(registerData.existUser).replace(/"/g, ""));
     }
