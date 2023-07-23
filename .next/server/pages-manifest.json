@@ -3,6 +3,5 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/api/user/profile": "pages/api/user/profile.js",
-  "/login": "pages/login.js",
-  "/upload": "pages/upload.js"
+  "/": "pages/index.js"
 }

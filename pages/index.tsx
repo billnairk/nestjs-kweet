@@ -23,7 +23,7 @@ export default function Home() {
           <Link href="login">
             <button>HOME</button>
           </Link>
-          <span>{profile?.user.loginId}님 안녕하세요</span>
+          <span>{profile?.user?.loginId}님 안녕하세요</span>
           <Link href="signup">
             <button>Profile</button>
           </Link>
