@@ -36,11 +36,6 @@ export default function SignUp() {
   useEffect(() => {
     if (error) console.log(error);
   }, [error]);
-  const resetErrorMsg = () => {
-    if (registerData?.success === false) {
-      setExistUser("");
-    }
-  };
   return (
     <>
       <div className="LoginMainContainer bg-purple-400 w-full h-screen p-2 flex flex-col">

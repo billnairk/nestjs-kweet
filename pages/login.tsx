@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import fetchApiUser from "../lib/client/fetchApiUser";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import useUser from "../lib/client/useUser";
 
 interface LoginFormType {
   loginId: string;
@@ -14,6 +15,8 @@ interface loginDataType {
 }
 
 export default function Login() {
+  const { user, isLoading } = useUser();
+  console.log(user);
   const [loginFn, { loading, error, data: loginData }] =
     fetchApiUser<loginDataType>("api/login/loginapi");
   const { register, handleSubmit } = useForm<LoginFormType>();
@@ -23,10 +26,10 @@ export default function Login() {
   const router = useRouter();
   useEffect(() => {
     if (loginData?.loginSuccess) {
+      alert("로그인 성공");
       router.replace("/");
-    } else if (loginData?.loginSuccess === false)
-      router.replace("http://www.naver.com");
-  }, [loginData]);
+    }
+  }, [loginData, router]);
   console.log(loading, error, loginData);
   return (
     <>

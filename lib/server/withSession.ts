@@ -8,11 +8,12 @@ declare module "iron-session" {
   }
 }
 
-const cookieOptions = {
-  cookieName: "kweet-cookie",
-  password: "foiwejoiwje328923jf923jf8sfwkldsoifsd0fwoiweoji32i",
+const cookie = {
+  cookieName: "kweet-session",
+  password:
+    "ijdidfs89sdf89dfs98fj98f32j89f23j89fsjiosfdiojsdfjoisdf98fsd89f289f2jiofijofijodfs89fdssfd",
 };
 
 export default function withSession(fn: any) {
-  return withIronSessionApiRoute(fn, cookieOptions);
+  return withIronSessionApiRoute(fn, cookie);
 }
